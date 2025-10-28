@@ -51,7 +51,6 @@ def both_ends(s):
         result = ''
     else:
         result = first_part + second_part
-
     return result
 
 
