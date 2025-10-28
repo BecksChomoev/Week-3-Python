@@ -43,6 +43,7 @@ def donuts(count):
 # is less than 2, return instead the empty string.
 def both_ends(s):
     result = None
+
     first_part = s[0:2]
     second_part = s[-2:]
 
