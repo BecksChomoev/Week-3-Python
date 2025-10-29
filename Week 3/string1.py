@@ -2,6 +2,7 @@
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
+from lib2to3.fixer_util import String
 
 
 # Google's Python Class
@@ -79,8 +80,15 @@ def fix_start(s):
 #   'dog', 'dinner' -> 'dig donner'
 # Assume a and b are length 2 or more.
 def mix_up(a, b):
-    # +++your code here+++
-    return
+    a_first_two = a[0:2]
+    a_rest = a[2:]
+
+    b_first_two = b[0:2]
+    b_rest = b[2:]
+
+    b_result = b_first_two + a_rest
+    a_result = a_first_two + b_rest
+    return '%s %s' % (b_result, a_result)
 
 
 # Provided simple test() function used in main() to print
