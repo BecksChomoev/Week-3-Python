@@ -6,13 +6,14 @@ while len(guests) < number_of_guests:
 
 receipt = float(input("How much was your total receipt?"))
 tip = int(input("How much percent did you tip?"))
-if tip >= 20:
+if tip > 20:
     print('Wow! Thank you for your generosity!')
 tip_amount = (tip / 100) * receipt
 total = tip_amount + receipt
 
 print("The tip amount is $" + str(tip_amount))
 print("Your total receipt is $" + str(total))
+per_person = str(total / number_of_guests)
 
 for guest in guests:
-    print("%s: should pay $" % guest + str(total / number_of_guests))
+    print(guest + " should pay: $" + per_person)
