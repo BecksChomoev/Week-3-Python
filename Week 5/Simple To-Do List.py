@@ -25,7 +25,7 @@ while True:
     elif user_input == 2:
         print("You chose to remove task. Which task would you like to remove?")
         show_tasks(tasks)
-        user_del_task = int(input("Enter your choice: "))
+        user_del_task = input("Enter your choice: ")
         tasks.remove(user_del_task)
         print("Task removed from your to-do list.")
         print("What would you like to do next?.")
