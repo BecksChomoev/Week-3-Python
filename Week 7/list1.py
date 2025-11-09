@@ -2,6 +2,8 @@
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
+from operator import itemgetter
+
 
 # Google's Python Class
 # http://code.google.com/edu/languages/google-python-class/
@@ -45,9 +47,8 @@ def front_x(words):
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
-  # +++your code here+++
-  return
 
+    return sorted(tuples, key=itemgetter(-1))
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
