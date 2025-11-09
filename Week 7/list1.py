@@ -23,9 +23,20 @@
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-  # +++your code here+++
-  return
+    x_words = []
+    left_words = []
+    for word in words:
+        if word[0] == 'x':
+            x_words.append(word)
+        else:
+            left_words.append(word)
 
+    x_words.sort()
+    left_words.sort()
+
+    result = x_words + left_words
+
+    return result
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in increasing
