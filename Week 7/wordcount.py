@@ -26,7 +26,7 @@ so the most common word is first, then the next most common, and so on.
 
 Use str.split() (no arguments) to split on all whitespace.
 
-Workflow: don't build the whole program at once.Instead identify just a first milestone,
+Workflow: don't build the whole program at once. Instead, identify just a first milestone,
 e.g. "well the first step is to extract the list of words." Write the code to
 get to that milestone, and just print your data structures at that point, and
 then you can do a sys.exit(0) so the program does not run ahead into its
@@ -42,33 +42,59 @@ Optional: define a helper function to avoid code duplication inside
 print_words() and print_top().
 
 """
-
+import operator
 import sys
+import string
 
-# +++your code here+++
-# Define print_words(filename) and print_top(filename) functions.
-# You could write a helper utility function that reads a file
-# and builds and returns a word/count dict for it.
-# Then print_words() and print_top() can just call the utility function.
+translator = str.maketrans('', '', string.punctuation)
 
-###
+alice = open('alice.txt').read().lower().translate(translator)
+small = open('small.txt').read().lower().translate(translator)
 
-# This basic command line argument parsing code is provided and
-# calls the print_words() and print_top() functions which you must define.
+alice_words = alice.split()
+small_words = small.split()
+
+def print_words(filename):
+    occurrences = {}
+
+    for word in filename:
+        if word in occurrences:
+            occurrences[word] += 1
+        else:
+            occurrences[word] = 1
+
+    return occurrences
+
+def print_top(filename):
+    occurrences = {}
+
+    for word in filename:
+        if word in occurrences:
+            occurrences[word] += 1
+        else:
+            occurrences[word] = 1
+
+    sorted_occurrences = sorted(occurrences.items(), key=operator.itemgetter(1), reverse=True)
+
+    return sorted_occurrences
+
 def main():
+  print(print_words(small_words))
+  print(print_top(alice_words))
+
   if len(sys.argv) != 3:
     print('usage: ./wordcount.py {--count | --topcount} file')
     sys.exit(1)
 
   option = sys.argv[1]
   filename = sys.argv[2]
-  #if option == '--count':
-    # print_words(filename)
-  #elif option == '--topcount':
-    # print_top(filename)
-  #else:
-    #print('unknown option: ' + option)
-    #sys.exit(1)
+  if option == '--count':
+    print_words(filename)
+  elif option == '--topcount':
+    print_top(filename)
+  else:
+    print('unknown option: ' + option)
+    sys.exit(1)
 
 if __name__ == '__main__':
   main()
