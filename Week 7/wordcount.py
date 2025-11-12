@@ -63,7 +63,7 @@ def print_words(filename):
         else:
             occurrences[word] = 1
 
-    return occurrences
+    return print(occurrences)
 
 def print_top(filename):
     occurrences = {}
@@ -76,22 +76,25 @@ def print_top(filename):
 
     sorted_occurrences = sorted(occurrences.items(), key=operator.itemgetter(1), reverse=True)
 
-    return sorted_occurrences
+    return print(sorted_occurrences)
 
 def main():
-  print(print_words(small_words))
-  print(print_top(alice_words))
-
   if len(sys.argv) != 3:
     print('usage: ./wordcount.py {--count | --topcount} file')
     sys.exit(1)
 
   option = sys.argv[1]
   filename = sys.argv[2]
+
+  if filename == 'alice.txt':
+      words = alice_words
+  elif filename == 'small.txt':
+      words = small_words
+
   if option == '--count':
-    print_words(filename)
+    print_words(words)
   elif option == '--topcount':
-    print_top(filename)
+    print_top(words)
   else:
     print('unknown option: ' + option)
     sys.exit(1)
